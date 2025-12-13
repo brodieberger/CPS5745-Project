@@ -9,8 +9,14 @@ function start() {
     
     fetch("api.php?type=line_chart").then(response => response.json())
         .then(data => {
-            console.log(data);
-            createChart(data);
+            createBarChart(data);
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    fetch("api.php?type=pie_chart").then(response => response.json())
+        .then(data => {
+            createPieChart(data);
         })
         .catch(error => {
             console.error('Error:', error);
@@ -18,8 +24,8 @@ function start() {
 }
 
 let barChartInstance = null;
-function createChart(data) {
-  const ctx = document.getElementById("myChart");
+function createBarChart(data) {
+  const ctx = document.getElementById("barChart");
 
   if (barChartInstance) {
     barChartInstance.destroy();
@@ -35,6 +41,40 @@ function createChart(data) {
       datasets: [
         {
           label: "# of games released per year",
+          data: values, 
+          borderWidth: 1,
+        },
+      ],
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true,
+        },
+      },
+    },
+  });
+}
+
+
+let pieChartInstance = null;
+function createPieChart(data) {
+  const ctx = document.getElementById("pieChart");
+
+  if (pieChartInstance) {
+    pieChartInstance.destroy();
+  }
+
+  const labels = data.map(item => item.genre); 
+  const values = data.map(item => item.game_count);
+
+  pieChartInstance = new Chart(ctx, {
+    type: "pie",
+    data: {
+      labels: labels,
+      datasets: [
+        {
+          label: "# of games having this genre",
           data: values, 
           borderWidth: 1,
         },

@@ -9,10 +9,28 @@ select appid, name, positive, negative, ((positive)/(positive+negative)*100) as 
 
 select count(distinct(name)) from steam_games;
 select count(name) from steam_games;
+select count(name) from steam_games where genres like "%Racing%";
+
+select count(distinct(genres)) from steam_games;
+select distinct(genres) from steam_games;
 
 select * from steam_games where release_date is not NULL order by release_date asc limit 100;
 
-select * from steam_games where name like "%Dota%";
+select * from steam_games where name like "%Blender%";
 select * from steam_games where genres like "%Indie%";
 
 select year(release_date), count(appid) from steam_games where release_date is not null group by year(release_date);
+
+CREATE TABLE genre_count_by_year AS
+SELECT
+    YEAR(s.release_date) AS year,
+    g.genre,
+    COUNT(*) AS genre_count
+FROM steam_games s
+JOIN steam_genres g ON s.appid = g.appid
+WHERE s.release_date IS NOT NULL
+GROUP BY year, g.genre
+ORDER BY year;
+
+#playtime
+select name, average_playtime_forever from steam_games where recommendations > 1000 order by average_playtime_forever desc;

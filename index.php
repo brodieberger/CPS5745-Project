@@ -1,6 +1,5 @@
 <?php
 include 'dbcredentials.php';
-$conn->close();
 ?>
 
 
@@ -12,7 +11,10 @@ $conn->close();
 
 
     <div style="max-height: 80%; margin: auto; display: flex; justify-content: center;">
-        <canvas id="myChart"></canvas>
+        <canvas id="barChart"></canvas>
+    </div>
+    <div style="max-height: 80%; margin: auto; display: flex; justify-content: center;">
+        <canvas id="pieChart"></canvas>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="scripts.js"></script>
