@@ -3,8 +3,8 @@
 body {
     margin: 0;
     font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    background: #f4f6f9;
-    color: #333;
+    background: #1d1f20;
+    color: whitesmoke;
 }
 
 h1, h2, h3 {
@@ -13,7 +13,7 @@ h1, h2, h3 {
 
 header {
     background: linear-gradient(135deg, #1b2838, #2a475e);
-    color: white;
+    color: whitesmoke;
     padding: 24px;
     text-align: center;
 }
@@ -33,7 +33,7 @@ header {
 }
 
 .stat-card {
-    background: white;
+    background: #181a1b;
     border-radius: 10px;
     padding: 20px 30px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.08);
@@ -43,7 +43,7 @@ header {
 
 .stat-card h2 {
     font-size: 1rem;
-    color: #666;
+    color: whitesmoke;
 }
 
 .stat-card p {
@@ -59,7 +59,7 @@ header {
     gap: 24px;
     flex-wrap: wrap;
     justify-content: center;
-    background: white;
+    background: #181a1b;
     margin: 0 20px;
     padding: 20px;
     border-radius: 10px;
@@ -84,7 +84,7 @@ label {
 select {
     padding: 8px;
     border-radius: 6px;
-    border: 1px solid #ccc;
+    border: 1px solid whitesmoke;
     font-size: 0.95rem;
 }
 
@@ -110,7 +110,7 @@ input[type="range"] {
 }
 
 .chart-card {
-    background: white;
+    background: #181a1b;
     border-radius: 12px;
     padding: 20px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.08);
@@ -132,6 +132,6 @@ input[type="range"] {
 .outlier-info {
     margin-top: 10px;
     font-size: 0.9rem;
-    color: #555;
+    color: whitesmoke;
     text-align: center;
 }
