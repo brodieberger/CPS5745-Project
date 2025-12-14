@@ -1,23 +1,95 @@
-<?php
-include 'dbcredentials.php';
-?>
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+    <meta charset="UTF-8">
+    <title>Steam Games Data Visualization</title>
 
-<html>
+    <link rel="stylesheet" href="static/styles.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
 
 <body>
-    <h1>Hello</h1>
-    <p id="game_number">value here</p>
+    <header>
+        <h1>Steam Games Analytics Dashboard</h1>
+        <p class="subtitle">
+            Interactive exploration of Steam releases by year, genre, platform, and playtime
+        </p>
+        <div id="loginBox">
+            <h2>Login</h2>
+
+            <input type="text" id="username" placeholder="Username">
+            <input type="password" id="password" placeholder="Password">
+
+            <button id="loginBtn">Login</button>
+            <button id="logoutBtn" disabled>Logout</button>
+
+            <p id="loginMessage"></p>
+        </div>
+
+    </header>
+
+    <section class="stats">
+        <div class="stat-card">
+            <h2>Total Games</h2>
+            <p id="game_number">—</p>
+        </div>
+    </section>
+
+    <section class="controls">
+        <div class="control-group">
+            <label for="platformSelect">Platform</label>
+            <select id="platformSelect">
+                <option value="all">All</option>
+                <option value="windows">Windows</option>
+                <option value="mac">Mac</option>
+                <option value="linux">Linux</option>
+            </select>
+        </div>
+
+        <div class="control-group wide">
+            <label>
+                Release Year:
+                <strong>
+                    <span id="yearLowLabel"></span>
+                    –
+                    <span id="yearHighLabel"></span>
+                </strong>
+            </label>
+
+            <div class="slider-container">
+                <input type="range" id="yearLow" min="1997" max="2024" value="1997">
+                <input type="range" id="yearHigh" min="1997" max="2024" value="2024">
+            </div>
+        </div>
+    </section>
+
+    <section class="charts">
+        <div class="chart-card full-width">
+            <h3>Games Released per Year</h3>
+            <canvas id="barChart"></canvas>
+        </div>
+
+        <div class="chart-card">
+            <h3>Genre Distribution</h3>
+            <canvas id="pieChart"></canvas>
+        </div>
+
+        <div class="chart-card">
+            <h3>Genre Popularity vs Average Playtime</h3>
+            <canvas id="scatterChart"></canvas>
+            <div id="outlierInfo" class="outlier-info"></div>
+        </div>
+    </section>
 
 
-    <div style="max-height: 80%; margin: auto; display: flex; justify-content: center;">
-        <canvas id="barChart"></canvas>
-    </div>
-    <div style="max-height: 80%; margin: auto; display: flex; justify-content: center;">
-        <canvas id="pieChart"></canvas>
-    </div>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="scripts.js"></script>
+
+    <script src="static/scripts.js"></script>
+    <script src="static/slider.js"></script>
+    <script src="static/charts.js"></script>
+    <script src="static/auth.js"></script>
+
     <script>
         window.onload = start;
     </script>

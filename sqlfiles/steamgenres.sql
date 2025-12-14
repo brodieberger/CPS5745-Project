@@ -36,7 +36,7 @@ WHERE s.genres IS NOT NULL
 
 
 DELETE FROM steam_genres
-WHERE genre = ''
+WHERE genre = 'Sexual Content'
    OR genre IS NULL;
 
 SELECT genre, COUNT(*) AS game_count, AVG(average_playtime_forever) AS avg_playtime
@@ -50,7 +50,20 @@ SELECT
     AVG(average_playtime_forever) AS avg_playtime
 FROM steam_genres
 GROUP BY genre
+HAVING COUNT(*) > 1000
 ORDER BY avg_playtime DESC;
 
 
-select * from steam_genres;
+select g.appid, sg.genre, g.release_date from steam_genres sg join steam_games g on sg.appid = g.appid 
+where release_date is not null
+AND YEAR(g.release_date) BETWEEN 1997 AND 1999
+order by release_date;
+
+SELECT sg.genre,
+COUNT(*) AS game_count
+FROM steam_genres sg
+JOIN steam_games g ON sg.appid = g.appid
+WHERE g.release_date IS NOT NULL AND YEAR(g.release_date) BETWEEN 2011 AND 2014
+GROUP BY sg.genre
+HAVING game_count > 1000
+ORDER BY game_count DESC

@@ -1,3 +1,5 @@
+use 2025F_bergebro;
+
 CREATE TABLE genre_count_by_year AS
 SELECT
     YEAR(s.release_date) AS year,

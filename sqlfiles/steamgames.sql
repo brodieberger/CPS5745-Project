@@ -10,8 +10,6 @@ select appid, name, positive, negative, ((positive)/(positive+negative)*100) as 
 select count(distinct(name)) from steam_games;
 select count(name) from steam_games;
 select count(name) from steam_games where genres like "%Racing%";
-select count(name) from steam_games where tags like "%Hentai%";
-
 
 select count(distinct(genres)) from steam_games;
 select distinct(genres) from steam_games;
