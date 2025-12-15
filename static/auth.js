@@ -21,6 +21,7 @@ loginBtn.onclick = () => {
   fetch("login.php", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
+    credentials: "same-origin",
     body: JSON.stringify({
       username: username.value,
       password: password.value
@@ -31,7 +32,8 @@ loginBtn.onclick = () => {
     if (res.success) {
       msg.innerText = "Login successful";
       setUI(true);
-      start();
+      onLoginSuccess();
+      reloadCharts();
     } else {
       msg.innerText = "Invalid credentials";
     }
@@ -39,11 +41,14 @@ loginBtn.onclick = () => {
 };
 
 logoutBtn.onclick = () => {
-  fetch("logout.php")
-    .then(() => {
-      msg.innerText = "Logged out";
-      setUI(false);
-    });
+  fetch("logout.php", {
+    credentials: "same-origin"
+  })
+  .then(() => {
+    msg.innerText = "Logged out";
+    setUI(false);
+    onLogout();
+  });
 };
 
 setUI(false);

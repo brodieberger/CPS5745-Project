@@ -23,7 +23,7 @@ $result = $stmt->get_result();
 if ($row = $result->fetch_assoc()) {
     if (hash('sha256', $password) === $row['password_hash']) {
         $_SESSION['uid'] = $row['uid'];
-        $_SESSION['username'] = $username;
+        $_SESSION['login'] = $username;
 
         echo json_encode(["success" => true]);
         exit;
