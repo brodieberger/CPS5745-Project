@@ -33,7 +33,6 @@ loginBtn.onclick = () => {
       msg.innerText = "Login successful";
       setUI(true);
       onLoginSuccess();
-      reloadCharts();
     } else {
       msg.innerText = "Invalid credentials";
     }

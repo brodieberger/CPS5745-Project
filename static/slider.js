@@ -75,6 +75,7 @@ function loadSavedSettings() {
         yearHigh.value = res.slider_high;
         platformSelect.value = res.platform;
         updateYearLabels();
+        reloadCharts();
       }
     });
 }
